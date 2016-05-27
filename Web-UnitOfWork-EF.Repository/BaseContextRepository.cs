@@ -15,8 +15,7 @@ namespace Web_UnitOfWork_EF.Repository
 {
     public class BaseContext<T> : DbContext where T : class
     {
-        public BaseContext()
-            : base("ConnectionUnitOfWork")
+        public BaseContext(): base("ConnectionUnitOfWork")
         {
             //Caso a base de dados não tenha sido criada
             Database.SetInitializer<BaseContext<T>>(null);
@@ -60,69 +59,12 @@ namespace Web_UnitOfWork_EF.Repository
                 modelBuilder.Configurations.Add(mappingClass);
             }
 
-            
-
-
         }
 
         public virtual void ChangeObjectState(Object model, EntityState state)
         {
             //facilita quando temos alterações e exclusões
             ((IObjectContextAdapter) this).ObjectContext.ObjectStateManager.ChangeObjectState(model, state);
-        }
-
-
-
-        public DbSet<T> DbSet { get; set; }
-
-        public virtual int Add(T model)
-        {
-            DbSet.Add(model);
-            return SaveChanges();
-        }
-
-        public virtual int Update(T model)
-        {
-            var data = Entry(model);
-            if (data.State == EntityState.Detached)
-            {
-                DbSet.Attach(model);
-            }
-
-            ChangeObjectState(model, EntityState.Modified);
-            return SaveChanges();
-        }
-
-        public virtual void Delete(T model)
-        {
-            var data = Entry(model);
-            if (data.State == EntityState.Detached)
-            {
-                DbSet.Attach(model);
-            }
-
-            ChangeObjectState(model,EntityState.Modified);
-            SaveChanges();
-        }
-
-        public virtual IEnumerable<T> GetAll()
-        {
-            return DbSet.ToList();
-        }
-
-        public virtual T GetById(object id)
-        {
-            return DbSet.Find(id);
-        }
-
-        public virtual IEnumerable<T> Where(System.Linq.Expressions.Expression<Func<T, bool>> expression)
-        {
-            return DbSet.Where(expression);
-        }
-
-        public virtual IEnumerable<T> OrderBy(System.Linq.Expressions.Expression<Func<T, bool>> expression)
-        {
-            return DbSet.OrderBy(expression);
         }
 
     }
