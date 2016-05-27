@@ -48,10 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseContext.cs" />
-    <Compile Include="Mapping\IMapping.cs" />
-    <Compile Include="Mapping\RecipeMapping.cs" />
-    <Compile Include="Mapping\UserMapping.cs" />
+    <Compile Include="BaseContextRepository.cs" />
+    <Compile Include="Interface\IUnitOfWorkRepository.cs" />
+    <Compile Include="Interface\IMappingRepository.cs" />
+    <Compile Include="Mapping\RecipeMappingRepository.cs" />
+    <Compile Include="Mapping\UserMappingRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

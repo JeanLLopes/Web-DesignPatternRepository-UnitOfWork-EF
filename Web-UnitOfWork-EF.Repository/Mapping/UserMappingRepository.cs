@@ -8,9 +8,9 @@ using Web_UnitOfWork_EF.Model;
 
 namespace Web_UnitOfWork_EF.Repository.Mapping
 {
-    public class UserMapping : EntityTypeConfiguration<UserModel>, IMapping
+    public class UserMappingRepository : EntityTypeConfiguration<UserModel>, IMapping
     {
-        public UserMapping()
+        public UserMappingRepository()
         {
             ToTable("User");
             HasKey(x => x.Id);

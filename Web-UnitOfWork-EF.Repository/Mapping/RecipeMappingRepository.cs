@@ -8,9 +8,9 @@ using Web_UnitOfWork_EF.Model;
 
 namespace Web_UnitOfWork_EF.Repository.Mapping
 {
-    public class RecipeMapping: EntityTypeConfiguration<RecipeModel>,IMapping
+    public class RecipeMappingRepository: EntityTypeConfiguration<RecipeModel>,IMapping
     {
-        public RecipeMapping()
+        public RecipeMappingRepository()
         {
             ToTable("Recipe");
             HasKey(x => x.Id);
