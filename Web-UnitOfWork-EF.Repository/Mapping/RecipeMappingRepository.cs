@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Web_UnitOfWork_EF.Model;
+using Web_UnitOfWork_EF.Repository.Interface;
 
 namespace Web_UnitOfWork_EF.Repository.Mapping
 {
