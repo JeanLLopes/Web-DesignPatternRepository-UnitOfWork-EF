@@ -12,7 +12,9 @@ namespace Web_DesignPatternRepository_UnitOfWork_EF.Controllers
     {
 
         //IMPLEMENTANDO O UNITOFWORK 
-        private readonly IUnitOfWork<UserModel> _unitOfWorkUser = new BaseRepository.UserRepository();
+        private readonly BaseRepository.UserRepository _unitOfWorkUser = new BaseRepository.UserRepository();
+
+
 
 
         // GET: User
@@ -22,7 +24,7 @@ namespace Web_DesignPatternRepository_UnitOfWork_EF.Controllers
         }
 
         // GET: User/Details/5
-        public ActionResult Details(Guid id)
+        public ActionResult Details(Int32 id)
         {
             var model = _unitOfWorkUser.GetById(id);
             return View();
