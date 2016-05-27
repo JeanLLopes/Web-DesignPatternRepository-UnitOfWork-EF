@@ -18,7 +18,7 @@ namespace Web_UnitOfWork_EF.Repository.Mapping
             Property(x => x.Nome).IsRequired().HasMaxLength(255);
             Property(x => x.Email).IsRequired().HasMaxLength(255);
             Property(x => x.DtNascimento).IsRequired();
-            HasMany(x => x.Recipes).WithOptional().HasForeignKey(x => x.UserId);
+            //HasMany(x => x.Recipes).WithOptional().HasForeignKey(x => x.UserId);
         }
     }
 

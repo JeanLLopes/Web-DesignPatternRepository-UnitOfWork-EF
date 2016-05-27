@@ -8,13 +8,15 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Web_UnitOfWork_EF.Model;
 using Web_UnitOfWork_EF.Repository.Mapping;
 
 namespace Web_UnitOfWork_EF.Repository
 {
-    public class BaseContext<T> : DbContext where T : class, IUnitOfWork<T>
+    public class BaseContext<T> : DbContext where T : class
     {
-        public BaseContext() : base("")
+        public BaseContext()
+            : base("ConnectionUnitOfWork")
         {
             //Caso a base de dados não tenha sido criada
             Database.SetInitializer<BaseContext<T>>(null);
@@ -24,8 +26,8 @@ namespace Web_UnitOfWork_EF.Repository
         {
             //O evento acima está implementado na classe BaseContext.cs que acabamos de criar, porém isso 
             //não é muito inteligente concorda ? Se nosso banco tiver 30 tabelas vamos fazer isso na mão ? Se fosse 50 tabelas ?
-            //modelBuilder.Configurations.Add(new UserMapping());
-            //modelBuilder.Configurations.Add(new RecipeMapping());
+            //modelBuilder.Configurations.Add(new UserMappingRepository());
+            //modelBuilder.Configurations.Add(new RecipeMappingRepository());
 
             //base.OnModelCreating(modelBuilder);
 
@@ -50,8 +52,8 @@ namespace Web_UnitOfWork_EF.Repository
 
 
 
-            // Com ajuda do Reflection criamos as instancias 
-            // e adicionamos no Entity Framework
+            //// Com ajuda do Reflection criamos as instancias 
+            //// e adicionamos no Entity Framework
             foreach (var mapping in typesToMapping)
             {
                 dynamic mappingClass = Activator.CreateInstance(mapping);
@@ -122,5 +124,6 @@ namespace Web_UnitOfWork_EF.Repository
         {
             return DbSet.OrderBy(expression);
         }
+
     }
 }

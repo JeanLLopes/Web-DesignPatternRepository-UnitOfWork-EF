@@ -12,12 +12,7 @@ namespace Web_DesignPatternRepository_UnitOfWork_EF.Controllers
     {
 
         //IMPLEMENTANDO O UNITOFWORK 
-        private IUnitOfWork<UserModel> _unitOfWorkUser;
-
-        public UserController(IUnitOfWork<UserModel> unitOfWorkUser)
-        {
-            _unitOfWorkUser = unitOfWorkUser;
-        }
+        private readonly IUnitOfWork<UserModel> _unitOfWorkUser = new BaseRepository.UserRepository();
 
 
         // GET: User
