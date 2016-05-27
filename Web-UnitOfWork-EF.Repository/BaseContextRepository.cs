@@ -122,9 +122,5 @@ namespace Web_UnitOfWork_EF.Repository
         {
             return DbSet.OrderBy(expression);
         }
-
-
-
-
     }
 }
